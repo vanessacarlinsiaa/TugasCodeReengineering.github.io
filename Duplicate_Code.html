@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="Duplicate_Code.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
 </head>
 
 <body>
@@ -26,15 +26,15 @@
         <nav class="navbar">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a>Bad Code Smell</a>
+                <li><a>Bad Code Smell <i class="fa fa-angle-down"></i></a>
                     <ul>
-                        <li><a href="#">Change Preventer</a>
+                        <li><a href="Change_Preventer.html">Change Preventer</a>
                             <ul>
                                 <li><a href="Divergent_Change.html">Divergent Change</a>
                                 <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchies</a>
                                 <li><a href="Shotgun_Surgery.html">Shotgun Surgery</a>
                             </ul>
-                        <li><a href="#">Dispensable</a>
+                        <li><a href="Dispensable.html">Dispensable </a>
                             <ul>
                                 <li><a href="Comments.html">Comments</a>
                                 <li><a href="Data_Class.html">Data Class</a>
@@ -51,11 +51,143 @@
         </nav>
     </header>
     
-    <div class="layer1">
-        <h2>Code Reengineering</h2>
-        <p>Bad Code Smell</p>
-        <p style="border-bottom: 2px dashed gray; font-weight: 300;">Dispensable & Change Preventer</p>
+    <div class="content1">
+        <h1>Duplicate Code</h1>
+        <img src="img/duplicate code.png" alt="DC">
+        <p>Duplicate Code adalah salah satu dari "Bad Code Smells" yang menandakan ada potongan code yang sama atau serupa
+            muncul di beberapa bagian dari program. Hal ini memperumit pemeliharaan dan pengembangan code, karena perubahan yang
+            dibutuhkan harus dilakukan di beberapa tempat, meningkatkan risiko kesalahan dan menyulitkan pemahaman code.</p>
     </div>
+
+    <hr class="hr1">
+    
+    <div class="layer2">
+        <div class="container1">
+            <img src="img/reason.png" alt="">
+        </div>
+        <div class="container2">
+            <h4>Alasan utama terjadinya "Duplicate Code":</h4><br> 
+            <p>
+                Duplikat code menunjukkan adanya kekurangan dalam desain dan pengorganisasian code. Hal ini dapat terjadi karena kurangnya
+                perhatian terhadap prinsip DRY (Don't Repeat Yourself) dan kemungkinan tidak adanya refactoring yang tepat.
+            </p>
+        </div>
+    </div>
+    </div>
+    <hr class="hr2">
+
+
+    <div class="layer3">
+        <div class="container1">
+            <h4>Cara Mengatasi</h4>
+            <p>Untuk mengatasi masalah duplikade, langkah-langkah refactoring diperlukan. Ini bisa termasuk membuat function atau
+                method baru untuk mengisolasi logika yang berulang, menggunakan class turunan atau pola desain lainnya, atau
+                mengidentifikasi pola-pola yang serupa dan mengabstraksikannya menjadi komponen yang dapat digunakan kembali.</p>
+        </div>
+        <div class="container2">
+            <img src="img/solve.png" alt="">
+        </div>
+    </div>
+    <hr class="hr3">
+
+    <div class="layer4">
+        <div class="wrapper">
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head">
+                <label for="collapsible-head">Contoh Code <i class="fa fa-angle-down"></i></label>
+                <div class="collapsible-text">
+                    <div class="penjelasan1">
+                        <p>Dalam contoh code sebelum dan sesudahnya, kita memiliki sebuah class Calculator yang memiliki method add dan subtract
+                            untuk melakukan operasi penjumlahan dan pengurangan. Kita juga memiliki class Main yang digunakan untuk menguji
+                            fungsionalitas dari Calculator.</p>
+                    </div>
+                    <div class="container1">
+                        <h5>Sebelum Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+    // Product.java
+    public class Calculator {
+        public int add(int a, int b) {
+            return a + b;
+        }
+    
+        public int subtract(int a, int b) {
+            return a - b;
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            Calculator calc = new Calculator();
+            int result1 = calc.add(10, 5);
+            int result2 = calc.add(8, 3);
+            int result3 = calc.subtract(20, 10);
+            int result4 = calc.subtract(15, 7);
+        }
+    }
+    
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Dalam code ini, terdapat duplicate code di dalam method add dan subtract di class Calculator. Meskipun dalam contoh
+                                ini code tersebut tidak terlalu panjang, tetapi jika method tersebut lebih kompleks, duplikasi code dapat menjadi
+                                masalah yang lebih serius.</p>
+                        </div>
+                    </div>
+                    <div class="container2">
+                        <h5>Setelah Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+// Product.java
+public class Calculator {
+    public int add(int a, int b) {
+        return performOperation(a, b, '+');
+    }
+
+    public int subtract(int a, int b) {
+        return performOperation(a, b, '-');
+    }
+
+    private int performOperation(int a, int b, char operator) {
+        if (operator == '+') {
+            return a + b;
+        } else if (operator == '-') {
+            return a - b;
+        }
+        return 0; // default return jika operator tidak valid
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        int result1 = calc.add(10, 5);
+        int result2 = calc.add(8, 3);
+        int result3 = calc.subtract(20, 10);
+        int result4 = calc.subtract(15, 7);
+    }
+}
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Dalam code setelah refactoring, kita menghindari duplicate code dengan membuat method performOperation yang menerima
+                                dua operand dan sebuah operator. Kedua method add dan subtract sekarang hanya bertanggung jawab untuk menentukan
+                                operator yang benar dan memanggil method performOperation. Dengan demikian, kita mengisolasi logika operasi
+                                matematika yang berulang ke dalam satu method, meningkatkan keterbacaan dan pemeliharaan code.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr class="hr4">
+    <div class="footer">
+        Copyright &copy; 2024 by Feren Lisady and Vanessa Carlinsia
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>

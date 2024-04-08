@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="Lazy_Class.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
 </head>
 
 <body>
@@ -26,15 +26,15 @@
         <nav class="navbar">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a>Bad Code Smell</a>
+                <li><a>Bad Code Smell <i class="fa fa-angle-down"></i></a>
                     <ul>
-                        <li><a href="#">Change Preventer</a>
+                        <li><a href="Change_Preventer.html">Change Preventer</a>
                             <ul>
                                 <li><a href="Divergent_Change.html">Divergent Change</a>
                                 <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchies</a>
                                 <li><a href="Shotgun_Surgery.html">Shotgun Surgery</a>
                             </ul>
-                        <li><a href="#">Dispensable</a>
+                        <li><a href="Dispensable.html">Dispensable </a>
                             <ul>
                                 <li><a href="Comments.html">Comments</a>
                                 <li><a href="Data_Class.html">Data Class</a>
@@ -51,11 +51,117 @@
         </nav>
     </header>
     
-    <div class="layer1">
-        <h2>Code Reengineering</h2>
-        <p>Bad Code Smell</p>
-        <p style="border-bottom: 2px dashed gray; font-weight: 300;">Dispensable & Change Preventer</p>
+    <div class="content1">
+        <h1>Lazy Class</h1>
+        <img src="img/lazy class.png" alt="DC">
+        <p>Lazy class adalah sebuah class yang tidak memberikan banyak nilai tambah atau fungsionalitas yang cukup signifikan
+            dalam program. Class semacam itu sering kali hanya memiliki beberapa metode, dan tidak memiliki alasan
+            yang kuat untuk keberadaannya.</p>
     </div>
+
+    <hr class="hr1">
+    
+    <div class="layer2">
+        <div class="container1">
+            <img src="img/reason.png" alt="">
+        </div>
+        <div class="container2">
+            <h4>Alasan utama terjadinya "Lazy CLass":</h4><br> 
+            <p>Class tersebut bisa menjadi beban yang tidak perlu dalam code karena mereka tidak memberikan fungsionalitas
+                yang cukup signifikan untuk membenarkan keberadaannya. Ini mengakibatkan overhead dalam pemeliharaan code dan dapat
+                mempersulit pemahaman terhadap struktur keseluruhan dari program.</p>
+        </div>
+    </div>
+    </div>
+    <hr class="hr2">
+
+
+    <div class="layer3">
+        <div class="container1">
+            <h4>Cara Mengatasi</h4>
+            <ul>
+                <li>Identifikasi class yang memiliki sedikit atau bahkan tidak ada peran yang penting dalam sistem.</li>
+                <li>Mempertimbangkan untuk menggabungkan function class tersebut ke dalam class lain yang terkait</li>
+                <li>Evaluasi kembali kebutuhan program dan pastikan setiap class memberikan kontribusi yang signifikan terhadap function keseluruhan.</li>
+            </ul>
+        </div>
+        <div class="container2">
+            <img src="img/solve.png" alt="">
+        </div>
+    </div>
+    <hr class="hr3">
+
+    <div class="layer4">
+        <div class="wrapper">
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head">
+                <label for="collapsible-head">Contoh Code <i class="fa fa-angle-down"></i></label>
+                <div class="collapsible-text">
+                    <div class="penjelasan1">
+                        <p>Mari kita lihat contoh sederhana di mana sebuah class memiliki "LazyClass". Class ini hanya memiliki
+                            satu variabel data dan satu metode untuk memproses data tersebut. Namun, class ini tidak memberikan banyak nilai
+                            tambah dalam sistem, sehingga dapat dianggap sebagai contoh dari "lazy class" dalam Dispensable Bad Code Smell.</p>
+                    </div>
+                    <div class="container1">
+                        <h5>Sebelum Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+    // Product.java
+    // Contoh kelas "lazy"
+public class LazyClass {
+    private int data;
+
+    public LazyClass(int data) {
+        this.data = data;
+    }
+
+    public void processData() {
+        System.out.println("Processing data: " + data);
+    }
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="container2">
+                        <h5>Setelah Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+// Product.java
+// Penyelesaian: menggabungkan fungsionalitas ke dalam kelas lain atau menghapusnya
+// Contoh penyelesaian dengan menggabungkan fungsionalitas ke dalam kelas lain
+public class NonLazyClass {
+    private int data;
+
+    public NonLazyClass(int data) {
+        this.data = data;
+    }
+
+    public void processData() {
+        System.out.println("Processing data: " + data);
+    }
+}
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Setelah diatasi, kita telah menggabungkan function class "LazyClass" ke dalam class "NonLazyClass". Sekarang,
+                                class "NonLazyClass" memiliki variabel data yang sama dan juga metode untuk memproses data. Dengan menggabungkan
+                                function ini, kita menghilangkan keberadaan class yang tidak perlu, sehingga mengurangi overhead dalam
+                                pemeliharaan code. Langkah ini membantu memperbaiki Dispensable Bad Code Smell dengan menghilangkan class yang tidak
+                                memberikan nilai tambah yang signifikan dalam sistem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr class="hr4">
+    <div class="footer">
+        Copyright &copy; 2024 by Feren Lisady and Vanessa Carlinsia
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>

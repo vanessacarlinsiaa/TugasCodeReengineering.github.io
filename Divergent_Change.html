@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="Divergent_Change.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
 </head>
 
 <body>
@@ -26,15 +26,15 @@
         <nav class="navbar">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a>Bad Code Smell</a>
+                <li><a>Bad Code Smell <i class="fa fa-angle-down"></i></a>
                     <ul>
-                        <li><a href="#">Change Preventer</a>
+                        <li><a href="Change_Preventer.html">Change Preventer</a>
                             <ul>
                                 <li><a href="Divergent_Change.html">Divergent Change</a>
                                 <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchies</a>
                                 <li><a href="Shotgun_Surgery.html">Shotgun Surgery</a>
                             </ul>
-                        <li><a href="#">Dispensable</a>
+                        <li><a href="Dispensable.html">Dispensable </a>
                             <ul>
                                 <li><a href="Comments.html">Comments</a>
                                 <li><a href="Data_Class.html">Data Class</a>
@@ -50,12 +50,179 @@
             </ul>
         </nav>
     </header>
-    
-    <div class="layer1">
-        <h2>Code Reengineering</h2>
-        <p>Bad Code Smell</p>
-        <p style="border-bottom: 2px dashed gray; font-weight: 300;">Dispensable & Change Preventer</p>
+
+    <div class="content1">
+        <h1>Divergent Change</h1>
+        <img src="img/divergent change.png" alt="DC">
+        <p>Divergent Change adalah salah satu dari "Bad Code Smells" yang menandakan bahwa suatu bagian code harus diubah di
+            banyak tempat yang berbeda setiap kali ada perubahan pada fitur atau function tertentu. Ini menunjukkan kurangnya
+            pemisahan tugas dan ketergantungan yang tinggi di antara komponen-komponen code.</p>
     </div>
+
+    <hr class="hr1">
+    
+    <div class="layer2">
+        <div class="container1">
+            <img src="img/reason.png" alt="">
+        </div>
+        <div class="container2">
+            <h4>Alasan utama terjadinya "Divergent Change":</h4><br> 
+        <ul>
+            <li>class Overloaded</li>
+            <li>Ketergantungan Tinggi</li>
+            <li>Desain Tidak Modular</li>
+            <li>Kurangnya Prinsip Desain</li>
+            <li>Perubahan bisnis yang sering</li>
+        </ul>
+        </div>
+    </div>
+    </div>
+    <hr class="hr2">
+
+
+    <div class="layer3">
+        <div class="container1">
+            <h4>Cara Mengatasi</h4>
+            <ul>
+                <li>Refaktor code</li>
+                <li>Menerapkan prinsip-prinsip desain</li>
+                <li>Menggunakan pola desain</li>
+                <li>Melakukan testing atau uji code</li>
+                <li>Melakukan code reviews</li>
+            </ul>
+        </div>
+        <div class="container2">
+            <img src="img/solve.png" alt="">
+        </div>
+    </div>
+    <hr class="hr3">
+
+    <div class="layer4">
+        <div class="wrapper">
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head">
+                <label for="collapsible-head">Contoh Code <i class="fa fa-angle-down"></i></label>
+                <div class="collapsible-text">
+                    <div class="penjelasan1">
+                        <p>Mari kita lihat contoh sederhana di mana kita memiliki class Product yang 
+                            bertanggung jawab untuk menyimpan informasi produk, dan class Inventory yang 
+                            mengelola inventaris produk tersebut. Awalnya, class Product hanya memiliki 
+                            satu atribut yaitu name. Namun, kemudian kita ingin menambahkan atribut price 
+                            ke dalam class Product.</p>
+                    </div>
+                    <div class="container1">
+                        <h5>Sebelum Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+// Product.java
+public class Product {
+    private String name;
+
+    public Product(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+// Inventory.java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Inventory {
+    private List<Product> products;
+
+    public Inventory() {
+        products = new ArrayList<>();
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public void displayInventory() {
+        for (Product product : products) {
+            System.out.println("Product: " + product.getName());
+        }
+    }
+}
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Sekarang, kita ingin menambahkan atribut "price" ke dalam class "Product". 
+                                Namun, karena class "Inventory" menggunakan class "Product" dan hanya memiliki 
+                                akses ke "name", kita harus mengubah class "Inventory" juga.</p>
+                        </div>
+                    </div>
+                    <div class="container2">
+                        <h5>Setelah Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+// Product.java
+public class Product {
+    private String name;
+    private double price; // tambahkan atribut price
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+}
+
+// Inventory.java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Inventory {
+    private List<Product> products;
+
+    public Inventory() {
+        products = new ArrayList<>();
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public void displayInventory() {
+        for (Product product : products) {
+            // Mengganti pemanggilan getName() dengan getPrice()
+            System.out.println("Product: " + product.getName() + ", Price: " + product.getPrice());
+        }
+    }
+}
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Dalam perubahan ini, kita telah menambahkan atribut "price" ke dalam class "Product", 
+                                dan kemudian memperbaharui class "Inventory" untuk menggunakan atribut "price" tersebut 
+                                ketika menampilkan inventaris. Dengan cara ini, perubahan pada atribut "price" tidak 
+                                lagi memengaruhi class "Inventory". Ini adalah contoh bagaimana kita bisa mengatasi 
+                                "Divergent Change" dengan merancang ulang struktur code agar lebih modular dan terpisah.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr class="hr4">
+    <div class="footer">
+        Copyright &copy; 2024 by Feren Lisady and Vanessa Carlinsia
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>

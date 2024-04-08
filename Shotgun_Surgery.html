@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="Shotgun_Surgery.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
 </head>
 
 <body>
@@ -26,15 +26,15 @@
         <nav class="navbar">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a>Bad Code Smell</a>
+                <li><a>Bad Code Smell <i class="fa fa-angle-down"></i></a>
                     <ul>
-                        <li><a href="#">Change Preventer</a>
+                        <li><a href="Change_Preventer.html">Change Preventer</a>
                             <ul>
                                 <li><a href="Divergent_Change.html">Divergent Change</a>
                                 <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchies</a>
                                 <li><a href="Shotgun_Surgery.html">Shotgun Surgery</a>
                             </ul>
-                        <li><a href="#">Dispensable</a>
+                        <li><a href="Dispensable.html">Dispensable </a>
                             <ul>
                                 <li><a href="Comments.html">Comments</a>
                                 <li><a href="Data_Class.html">Data Class</a>
@@ -51,11 +51,146 @@
         </nav>
     </header>
     
-    <div class="layer1">
-        <h2>Code Reengineering</h2>
-        <p>Bad Code Smell</p>
-        <p style="border-bottom: 2px dashed gray; font-weight: 300;">Dispensable & Change Preventer</p>
+    <div class="content1">
+        <h1>Shotgun Surgery</h1>
+        <img src="img/shotgun surgery.png" alt="DC">
+        <p>Shotgun Surgery adalah code yang terkena dampaknya ketika perubahan kecil pada code memaksa perubahan besar pada banyak class atau modul 
+            yang berbeda. Ini mengindikasikan bahwa logika terkait secara fungsional tersebar di beberapa bagian code yang berbeda.</p>
     </div>
+
+    <hr class="hr1">
+    
+    <div class="layer2">
+        <div class="container1">
+            <img src="img/reason.png" alt="">
+        </div>
+        <div class="container2">
+            <h4>Alasan utama terjadinya "Shotgun Surgery":</h4>
+            <p>Shotgun Surgery terjadi ketika logika terkait tersebar di banyak bagian code tanpa pengelompokan yang tepat. Hal ini bisa 
+            disebabkan oleh kurangnya desain yang baik, kurangnya pemisahan konsep, atau ketidakjelasan dalam struktur program.</p>
+        </div>
+    </div>
+    </div>
+    <hr class="hr2">
+
+
+    <div class="layer3">
+        <div class="container1">
+            <h4>Cara Mengatasi</h4>
+            <ul>
+                <li>Refaktor code</li>
+                <li>Terapkan pola desain seperti "Single Responsibility Principle" (SRP) dan "Separation of Concerns" (SoC) 
+                    untuk memastikan bahwa setiap bagian code bertanggung jawab atas satu hal yang spesifik.</li>
+                <li>Gunakan Pub/Sub Pattern untuk mengurangi ketergantungan langsung antara bagian-bagian yang berbeda, 
+                    sehingga perubahan pada satu bagian tidak mempengaruhi yang lain secara langsung.</li>
+                <li>Uji Regresi Otomatis</li>
+            </ul>
+        </div>
+        <div class="container2">
+            <img src="img/solve.png" alt="">
+        </div>
+    </div>
+    <hr class="hr3">
+    
+    <div class="layer4">
+        <div class="wrapper">
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head">
+                <label for="collapsible-head">Contoh Code <i class="fa fa-angle-down"></i></label>
+                <div class="collapsible-text">
+                    <div class="container1">
+                        <h5>Sebelum Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+// BadCode.java
+public class BadCode {
+    public void processOrder(int productId, int quantity) {
+        // Logic for processing order
+        // This method is responsible for both processing payment and updating inventory
+        processPayment(productId, quantity);
+        updateInventory(productId, quantity);
+    }
+
+    public void processPayment(int productId, int quantity) {
+        // Logic for processing payment
+    }
+
+    public void updateInventory(int productId, int quantity) {
+        // Logic for updating inventory
+    }
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="container2">
+                        <h5>Setelah Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+// PaymentProcessor.java
+public class PaymentProcessor {
+    public void processPayment(int productId, int quantity) {
+        // Logic for processing payment
+    }
+}
+
+// InventoryManager.java
+public class InventoryManager {
+    public void updateInventory(int productId, int quantity) {
+        // Logic for updating inventory
+    }
+}
+
+// OrderManager.java
+public class OrderManager {
+    private PaymentProcessor paymentProcessor;
+    private InventoryManager inventoryManager;
+
+    public OrderManager(PaymentProcessor paymentProcessor, InventoryManager inventoryManager) {
+        this.paymentProcessor = paymentProcessor;
+        this.inventoryManager = inventoryManager;
+    }
+
+    public void processOrder(int productId, int quantity) {
+        paymentProcessor.processPayment(productId, quantity);
+        inventoryManager.updateInventory(productId, quantity);
+        // Logic for processing order (if needed)
+    }
+}
+
+// Main.java
+public class Main {
+    public static void main(String[] args) {
+        PaymentProcessor paymentProcessor = new PaymentProcessor();
+        InventoryManager inventoryManager = new InventoryManager();
+        OrderManager orderManager = new OrderManager(paymentProcessor, inventoryManager);
+
+        int productId = 123;
+        int quantity = 2;
+        orderManager.processOrder(productId, quantity);
+    }
+}                                
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Dalam penyelesaian code di atas, tanggung jawab untuk memproses pembayaran dipisahkan ke dalam class 
+                                "PaymentProcessor", dan tanggung jawab untuk memperbarui inventaris dipisahkan ke dalam class 
+                                "InventoryManager". Class "OrderManager" bertanggung jawab hanya untuk memproses pesanan, 
+                                mengurangi dampak "shotgun surgery" dengan memisahkan perubahan yang terkait dengan fungsionalitas 
+                                yang berbeda ke dalam class-class yang sesuai.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr class="hr4">
+    <div class="footer">
+        Copyright &copy; 2024 by Feren Lisady and Vanessa Carlinsia
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>

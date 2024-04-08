@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="Speculative_Generality.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
 </head>
 
 <body>
@@ -26,15 +26,15 @@
         <nav class="navbar">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a>Bad Code Smell</a>
+                <li><a>Bad Code Smell <i class="fa fa-angle-down"></i></a>
                     <ul>
-                        <li><a href="#">Change Preventer</a>
+                        <li><a href="Change_Preventer.html">Change Preventer</a>
                             <ul>
                                 <li><a href="Divergent_Change.html">Divergent Change</a>
                                 <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchies</a>
                                 <li><a href="Shotgun_Surgery.html">Shotgun Surgery</a>
                             </ul>
-                        <li><a href="#">Dispensable</a>
+                        <li><a href="Dispensable.html">Dispensable </a>
                             <ul>
                                 <li><a href="Comments.html">Comments</a>
                                 <li><a href="Data_Class.html">Data Class</a>
@@ -51,11 +51,93 @@
         </nav>
     </header>
     
-    <div class="layer1">
-        <h2>Code Reengineering</h2>
-        <p>Bad Code Smell</p>
-        <p style="border-bottom: 2px dashed gray; font-weight: 300;">Dispensable & Change Preventer</p>
+    <div class="content1">
+        <h1>Speculative Generality</h1>
+        <img src="img/speculative generality.png" alt="DC">
+        <p>Speculative Generality terjadi ketika sebuah code memiliki fitur atau function yang tidak digunakan 
+            saat ini, tetapi disertakan karena diperkirakan mungkin akan berguna di masa depan. Hal ini dapat 
+            menciptakan kompleksitas yang tidak perlu dan mempersulit pemahaman terhadap code.</p>
     </div>
+
+    <hr class="hr1">
+    
+    <div class="layer2">
+        <div class="container1">
+            <img src="img/reason.png" alt="">
+        </div>
+        <div class="container2">
+            <h4>Alasan utama terjadinya "Speculative Generality":</h4><br> 
+            <p>Speculative generality sering kali muncul karena pengembang mencoba untuk memprediksi kebutuhan masa depan 
+                tanpa basis yang kuat atau permintaan yang jelas. Hal ini dapat menyebabkan overhead dalam pengembangan, 
+                pemeliharaan, dan pengujian code.</p>
+        </div>
+    </div>
+    </div>
+    <hr class="hr2">
+
+
+    <div class="layer3">
+        <div class="container1">
+            <h4>Cara Mengatasi</h4>
+            <p>Untuk mengatasi speculative generality, penting untuk fokus pada kebutuhan yang sebenarnya dan menghindari 
+                menambahkan fitur atau function yang tidak dibutuhkan saat ini. Diperlukan pendekatan yang lebih tangkas dan 
+                iteratif dalam pengembangan software.</p>>
+        </div>
+        <div class="container2">
+            <img src="img/solve.png" alt="">
+        </div>
+    </div>
+    <hr class="hr3">
+
+    <div class="layer4">
+        <div class="wrapper">
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head">
+                <label for="collapsible-head">Contoh Code <i class="fa fa-angle-down"></i></label>
+                <div class="collapsible-text">
+                    <div class="container1">
+                        <h5>Sebelum Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+public class SpeculativeGeneralityExample {
+    public void doSomething() {
+        // implementasi yang kompleks dan tidak dibutuhkan saat ini
+        // karena diperkirakan mungkin akan berguna di masa depan
+    }
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="container2">
+                        <h5>Setelah Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+// Hanya menyertakan fitur yang dibutuhkan saat ini
+public class RefactoredSpeculativeGeneralityExample {
+    public void doSomethingNeededNow() {
+        // implementasi yang diperlukan saat ini
+    }
+}
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Dalam penyelesaian code yang disajikan di atas, kita membuang fitur yang tidak dibutuhkan 
+                                saat ini dan hanya menyertakan apa yang benar-benar diperlukan. Hal ini membuat code menjadi 
+                                lebih sederhana dan mudah dipahami.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr class="hr4">
+    <div class="footer">
+        Copyright &copy; 2024 by Feren Lisady and Vanessa Carlinsia
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>

@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Change Preventer</title>
-    <link rel="stylesheet" href="Change_Preventer.css
+    <link rel="stylesheet" href="Change_Preventer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -26,7 +25,7 @@
         <nav class="navbar">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a>Bad Code Smell</a>
+                <li><a>Bad Code Smell <i class="fa fa-angle-down"></i></a>
                     <ul>
                         <li><a href="Change_Preventer.html">Change Preventer</a>
                             <ul>
@@ -34,7 +33,7 @@
                                 <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchies</a>
                                 <li><a href="Shotgun_Surgery.html">Shotgun Surgery</a>
                             </ul>
-                        <li><a href="Dispensable.html">Dispensable</a>
+                        <li><a href="Dispensable.html">Dispensable </a>
                             <ul>
                                 <li><a href="Comments.html">Comments</a>
                                 <li><a href="Data_Class.html">Data Class</a>
@@ -52,9 +51,62 @@
     </header>
     
     <div class="layer1">
-        <h2>Code Reengineering</h2>
-        <p>Bad Code Smell</p>
-        <p style="border-bottom: 2px dashed gray; font-weight: 300;">Dispensable & Change Preventer</p>
+        <div class="container1"> 
+            <img src="img/changepreventers.png" alt="">
+        </div>
+        <div class="container2">
+            <h1>Change Preventers</h1>
+            <p>Change preventers adalah smell yang mengartikan bahwa jika Anda perlu mengubah sesuatu dalam code anda, maka Anda
+                harus membuat banyak perubahan di tempat lain juga. Pengembangan program jauh lebih rumit, sulit serta biayanya jauh
+                lebih mahal sebagai hasilnya.</p>
+        </div>
+    </div>
+
+    <div class="layer2">        
+        <div class="container1"> 
+            <div class="left">
+                <!-- <a href="Divergent_Change.html"></a> -->
+                <img src="img/divergent change.png" alt="">
+                <h2>Divergent Change</h2>
+            </div>
+            <div class="right">
+                <p>Divergent Change adalah salah satu dari "Bad Code Smells" yang menandakan bahwa suatu bagian code harus diubah di
+                    banyak tempat yang berbeda setiap kali ada perubahan pada fitur atau function tertentu. Ini menunjukkan kurangnya
+                    pemisahan tugas dan ketergantungan yang tinggi di antara komponen-komponen code.</p>
+                <br><a href="Divergent_Change.html">Read more ></a></p>
+            </div>
+        </div>
+        
+        <div class="container2">
+            <div class="left">
+                <img src="img/parallel inheritance hierarchies.png" alt="">
+                <h2>Parallel Inheritance Hierarchies</h2>
+            </div>
+            <div class="right">
+                <p>Parallel inheritance hierarchy adalah salah satu jenis "code smell" yang terjadi ketika terdapat dua atau lebih hierarki kelas yang sejajar 
+                    atau sejajar dalam sebuah sistem. Ini terjadi ketika kelas-kelas dalam hierarki memiliki struktur yang serupa tetapi tidak berbagi hubungan 
+                    warisan. Misalnya, ada hierarki kelas untuk tipe hewan dan hierarki kelas terpisah untuk jenis makanan, di mana kelas-kelas dalam hierarki 
+                    makanan berhubungan dengan kelas-kelas dalam hierarki hewan, tetapi keduanya memiliki struktur terpisah.</p>
+                <br><a href="Parallel_Inheritance_Hierarchies.html">Read more ></a></p>
+            </div>
+        </div>
+
+        <div class="container3">
+            <div class="left">
+                <img src="img/shotgun surgery.png" alt="">
+                <h2>Shotgun Surgery</h2>
+            </div>
+            <div class="right">
+                <p>Shotgun Surgery adalah code yang terkena dampaknya ketika perubahan kecil pada code memaksa perubahan besar pada banyak kelas atau modul 
+                    yang berbeda. Ini mengindikasikan bahwa logika terkait secara fungsional tersebar di beberapa bagian code yang berbeda.</p>
+                <br><a href="Shotgun_Surgery.html">Read more ></a></p>
+            </div>
+        </div>
+    </div>
+
+    <hr class="hr4">
+    <div class="footer">
+        Copyright &copy; 2024 by Feren Lisady and Vanessa Carlinsia
     </div>
 </body>
 

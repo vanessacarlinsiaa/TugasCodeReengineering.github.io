@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="Home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -26,7 +25,7 @@
         <nav class="navbar">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a>Bad Code Smell</a>
+                <li><a>Bad Code Smell <i class="fa fa-angle-down"></i></a>
                     <ul>
                         <li><a href="Change_Preventer.html">Change Preventer</a>
                             <ul>
@@ -34,7 +33,7 @@
                                 <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchies</a>
                                 <li><a href="Shotgun_Surgery.html">Shotgun Surgery</a>
                             </ul>
-                        <li><a href="Dispensable.html">Dispensable</a>
+                        <li><a href="Dispensable.html">Dispensable </a>
                             <ul>
                                 <li><a href="Comments.html">Comments</a>
                                 <li><a href="Data_Class.html">Data Class</a>
@@ -52,9 +51,82 @@
     </header>
     
     <div class="layer1">
-        <h2>Code Reengineering</h2>
-        <p>Bad Code Smell</p>
-        <p style="border-bottom: 2px dashed gray; font-weight: 300;">Dispensable & Change Preventer</p>
+        <img src="img/code smell home.png" alt=""> 
+
+        <p>Bad code smell adalah indikasi atau tanda dalam source code yang menunjukkan adanya masalah yang lebih dalam pada desain atau kualitas code. Code smell bukan merupakan bug atau error, melainkan pelanggaran terhadap prinsip-prinsip desain yang fundamental, yang dapat berdampak negatif pada kualitas desain secara keseluruhan.</p>
+        <p>Meskipun code smell tidak mencegah program untuk berfungsi dengan baik, namun keberadaannya mengindikasikan adanya kelemahan desain yang dapat memperlambat proses pengembangan atau meningkatkan risiko munculnya bug di masa depan. Code smell juga dapat menjadi indikator dari faktor-faktor yang berkontribusi pada technical debt dalam pengembangan perangkat lunak.</p>
+        <p>Bad code smell bukan merupakan masalah yang langsung terlihat, tetapi merupakan sinyal adanya potensi masalah yang lebih dalam pada desain dan kualitas code. Mengidentifikasi dan mengatasi code smell sejak dini dapat membantu menjaga kualitas code dan menghindari masalah yang lebih besar di kemudian hari dalam proses pengembangan perangkat lunak.</p>
+    </div>
+    <hr class="hr1">
+    <div class="layer2">
+        <div class="container1">
+            <img src="img/dispensables.png" alt="">
+        </div>
+        <div class="container2">
+            <h1>Dispensables</h1>
+            <p>Dispensable adalah sesuatu yang tidak berguna dan tidak diperlukan didalam sebuah code. Keberadaannya tidak akan
+                membuat code menjadi lebih bersih, lebih efisien, dan lebih mudah dipahami.</p>
+                <ul>
+                    <li><a href="Comments.html"><i class="fa fa-cloud"></i> Comments</a></li>
+                    <li><a href="Lazy_Class.html"><i class="fa fa-cloud"></i> Lazy Class</a></li>
+                    <li><a href="Data_Class.html"><i class="fa fa-cloud"></i> Data Class</a></li>
+                    <li><a href="Duplicate_Code.html"><i class="fa fa-cloud"></i> Duplicate Code</a></li>
+                    <li><a href="Dead_Code.html"><i class="fa fa-cloud"></i> Dead Code</a></li>
+                    <li><a href="Speculative_Generality.html"><i class="fa fa-cloud"></i> Speculative Generality</a></li>
+                </ul>
+        </div>
+    </div>
+
+    <hr class="hr2">
+
+    <div class="layer3">
+        <div class="container1">
+            <h1>Change Preventers</h1>
+            <p>Change preventers adalah smell yang mengartikan bahwa jika Anda perlu mengubah sesuatu dalam code anda, maka Anda
+                harus membuat banyak perubahan di tempat lain juga. Pengembangan program jauh lebih rumit, sulit serta biayanya jauh
+                lebih mahal sebagai hasilnya.</p>
+                <div class="container3">
+                    <ul>
+                        <li><a href="Divergent_Change.html">Divergent Change <i class="fa fa-cloud"></i></a></li>
+                        <li><a href="Shotgun_Surgery.html">Shotgun Surgery <i class="fa fa-cloud"></i></a></li>
+                        <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchy <i class="fa fa-cloud"></i></a></li>
+                    </ul>
+                </div>
+        </div>
+        <div class="container2">
+            <img src="img/changepreventers.png" alt="">
+        </div>
+    </div>
+    <hr class="hr3">
+
+    <div class="layer4">
+        <div class="container1">
+            <h1>Referensi</h1>
+        </div>
+
+        <div class="container2">
+            <div class="card">
+                <a href="https://refactoring.guru/refactoring/smells">
+                <img src="img/RGlogo.png" alt="">
+                <div class="container3">
+                    <h3>Refactoring Guru</h3>
+                </div>
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="https://akmalrusli363.github.io/">
+                <img src="img/ARlogo.png" alt="">
+                <div class="container3">
+                    <h3>Akmal Rusli on github</h3>
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr class="hr4">
+    <div class="footer">
+        Copyright &copy; 2024 by Feren Lisady and Vanessa Carlinsia
     </div>
 </body>
 

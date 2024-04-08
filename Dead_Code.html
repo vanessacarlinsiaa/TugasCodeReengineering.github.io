@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="Dead_Code.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
         <nav class="navbar">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a>Bad Code Smell</a>
+                <li><a>Bad Code Smell <i class="fa fa-angle-down"></i></a>
                     <ul>
                         <li><a href="Change_Preventer.html">Change Preventer</a>
                             <ul>
@@ -34,7 +34,7 @@
                                 <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchies</a>
                                 <li><a href="Shotgun_Surgery.html">Shotgun Surgery</a>
                             </ul>
-                        <li><a href="Dispensable.html">Dispensable</a>
+                        <li><a href="Dispensable.html">Dispensable </a>
                             <ul>
                                 <li><a href="Comments.html">Comments</a>
                                 <li><a href="Data_Class.html">Data Class</a>
@@ -51,11 +51,111 @@
         </nav>
     </header>
     
-    <div class="layer1">
-        <h2>Code Reengineering</h2>
-        <p>Bad Code Smell</p>
-        <p style="border-bottom: 2px dashed gray; font-weight: 300;">Dispensable & Change Preventer</p>
+    <div class="content1">
+        <h1>Dead Code</h1>
+        <img src="img/dead code.png" alt="DC">
+        <p>Dead code merujuk pada potongan code yang tidak pernah dieksekusi dalam aplikasi. Ini bisa berupa 
+            function, variabel, atau bahkan blok code yang tidak lagi digunakan atau diakses dalam aplikasi.</p>
     </div>
+
+    <hr class="hr1">
+    
+    <div class="layer2">
+        <div class="container1">
+            <img src="img/reason.png" alt="">
+        </div>
+        <div class="container2">
+            <h4>Alasan utama terjadinya "Dead Code":</h4>
+            <p>Dead code dapat membuat code sulit dipahami, karena developer mungkin bingung apakah potongan 
+                code tersebut masih diperlukan atau tidak. Hal ini juga dapat memperburuk kinerja aplikasi 
+                karena sumber daya digunakan untuk mengeksekusi code yang tidak berguna.</p>
+        </div>
+    </div>
+    </div>
+    <hr class="hr2">
+
+
+    <div class="layer3">
+        <div class="container1">
+            <h4>Cara Mengatasi</h4>
+            <ul>
+                <li>Pertama, identifikasi semua potongan code yang tidak pernah digunakan atau diakses dalam aplikasi.</li>
+                    <br>
+                <li>Kemudian, hapus atau comment code tersebut agar tidak membebani aplikasi. Penting juga untuk melakukan pembersihan secara berkala untuk memastikan tidak ada code mati yang tertinggal.</li>
+            </ul>
+        </div>
+        <div class="container2">
+            <img src="img/solve.png" alt="">
+        </div>
+    </div>
+    <hr class="hr3">
+
+    <div class="layer4">
+        <div class="wrapper">
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head">
+                <label for="collapsible-head">Contoh Code <i class="fa fa-angle-down"></i></label>
+                <div class="collapsible-text">
+                    <div class="container1">
+                        <h5>Sebelum Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+public class DeadCodeExample {
+    public static void main(String[] args) {
+        int x = 5;
+        int y = 10;
+        
+        // Dead code below, never gets executed
+        int z = x * y;
+        System.out.println("The value of z is: " + z);
+    }
+}                                                            
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Dalam contoh sebelumnya, kita memiliki sebuah class Java yang memiliki method main. 
+                                Di dalam method tersebut, kita mendefinisikan dua variabel x dan y dengan nilai 
+                                masing-masing 5 dan 10. Kemudian, kita memiliki sebuah variabel z yang mengalikan 
+                                nilai x dan y, tetapi nilai z tidak pernah digunakan atau dicetak. Oleh karena itu, 
+                                variabel z dan perhitungan matematika yang terkait adalah contoh kode mati atau dead code.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="container2">
+                        <h5>Setelah Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+public class DeadCodeExample {
+    public static void main(String[] args) {
+        int x = 5;
+        int y = 10;
+        
+        // Dead code removed
+        System.out.println("The value of z is: " + (x * y));
+    }
+}
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Pada contoh kode yang telah dimodifikasi, kita telah menghilangkan potongan code 
+                                yang tidak pernah digunakan, yaitu variabel z dan perhitungan matematika yang terkait. 
+                                Sekarang, perhitungan untuk mencetak nilai z langsung dimasukkan ke dalam argumen method 
+                                println, sehingga kita tidak lagi memiliki dead code dalam aplikasi. Ini membuat code 
+                                lebih bersih dan lebih mudah dipahami.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr class="hr4">
+    <div class="footer">
+        Copyright &copy; 2024 by Feren Lisady and Vanessa Carlinsia
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>

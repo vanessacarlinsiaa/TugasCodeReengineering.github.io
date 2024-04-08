@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="Parallel_Inheritance_Hierarchies.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
 </head>
 
 <body>
@@ -26,15 +26,15 @@
         <nav class="navbar">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a>Bad Code Smell</a>
+                <li><a>Bad Code Smell <i class="fa fa-angle-down"></i></a>
                     <ul>
-                        <li><a href="#">Change Preventer</a>
+                        <li><a href="Change_Preventer.html">Change Preventer</a>
                             <ul>
                                 <li><a href="Divergent_Change.html">Divergent Change</a>
                                 <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchies</a>
                                 <li><a href="Shotgun_Surgery.html">Shotgun Surgery</a>
                             </ul>
-                        <li><a href="#">Dispensable</a>
+                        <li><a href="Dispensable.html">Dispensable </a>
                             <ul>
                                 <li><a href="Comments.html">Comments</a>
                                 <li><a href="Data_Class.html">Data Class</a>
@@ -51,11 +51,159 @@
         </nav>
     </header>
     
-    <div class="layer1">
-        <h2>Code Reengineering</h2>
-        <p>Bad Code Smell</p>
-        <p style="border-bottom: 2px dashed gray; font-weight: 300;">Dispensable & Change Preventer</p>
+    <div class="content1">
+        <h1>Parallel Inheritance Hierarchies</h1>
+        <img src="img/parallel inheritance hierarchies.png" alt="DC">
+        <p>Parallel inheritance hierarchy adalah salah satu jenis "code smell" yang terjadi ketika terdapat dua atau lebih hierarki class yang sejajar 
+            atau sejajar dalam sebuah sistem. Ini terjadi ketika class-class dalam hierarki memiliki struktur yang serupa tetapi tidak berbagi hubungan 
+            warisan. Misalnya, ada hierarki class untuk tipe hewan dan hierarki class terpisah untuk jenis makanan, di mana class-class dalam hierarki 
+            makanan berhubungan dengan class-class dalam hierarki hewan, tetapi keduanya memiliki struktur terpisah.</p>
     </div>
+
+    <hr class="hr1">
+    
+    <div class="layer2">
+        <div class="container1">
+            <img src="img/reason.png" alt="">
+        </div>
+        <div class="container2">
+            <h4>Alasan utama terjadinya <br>"Parallel Inheritance Hierarchies":</h4>
+        <ul>
+            <li>Ketergantungan antar hirarki</li>
+            <li>Tidak menggunakan pola desain yang tepat</li>
+            <li>Pemecahan function yang berlebihan</li>
+            <li>Hubungan antar class yang tidak diatur dengan benar</li>
+        </ul>
+        </div>
+    </div>
+    </div>
+    <hr class="hr2">
+
+
+    <div class="layer3">
+        <div class="container1">
+            <h4>Cara Mengatasi</h4>
+            <ul>
+                <li>Menggunakan pola desain, seperti pola Composite 
+                    atau pola Strategy, untuk mengelompokkan dan memisahkan 
+                    hierarki class. </li>
+                    <br>
+                <li>Refactoring untuk menggabungkan hierarki-hierarki 
+                    tersebut menjadi satu jika memungkinkan.</li>
+            </ul>
+        </div>
+        <div class="container2">
+            <img src="img/solve.png" alt="">
+        </div>
+    </div>
+    <hr class="hr3">
+
+    <div class="layer4">
+        <div class="wrapper">
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head">
+                <label for="collapsible-head">Contoh Code <i class="fa fa-angle-down"></i></label>
+                <div class="collapsible-text">
+                    <div class="container1">
+                        <h5>Sebelum Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+// Hierarki class hewan
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking");
+    }
+}
+
+// Hierarki class makanan
+class Food {
+    void cook() {
+        System.out.println("Food is being cooked");
+    }
+}
+
+class Meat extends Food {
+    void grill() {
+        System.out.println("Meat is being grilled");
+    }   
+}                               
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="container2">
+                        <h5>Setelah Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+// Menggabungkan hierarki class hewan dan makanan
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking");
+    }
+
+    // Dog dapat makan makanan apa saja
+    void eatFood(Food food) {
+        System.out.println("Dog is eating " + food.getClass().getSimpleName());
+    }
+}
+
+// Hierarki class makanan
+class Food {
+    void cook() {
+        System.out.println("Food is being cooked");
+    }
+}
+
+class Meat extends Food {
+    void grill() {
+        System.out.println("Meat is being grilled");
+    }
+}
+
+// Menggabungkan hierarki class makanan
+class Meat extends Food {
+    void grill() {
+        System.out.println("Meat is being grilled");
+    }
+}
+
+class Veggie extends Food {
+    void chop() {
+        System.out.println("Vegetable is being chopped");
+    }
+}
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Dalam penyelesaian ini, masalah "Parallel Inheritance Hierarchy" diatasi dengan menggabungkan 
+                                class makanan ke dalam hierarki class hewan. Selanjutnya, setiap jenis hewan dapat mengonsumsi 
+                                jenis makanan apa pun sesuai kebutuhan. Hierarki class hewan dan makanan tidak lagi berjalan 
+                                secara paralel, yang mengurangi redundansi dan meningkatkan struktur keseluruhan code.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr class="hr4">
+    <div class="footer">
+        Copyright &copy; 2024 by Feren Lisady and Vanessa Carlinsia
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>

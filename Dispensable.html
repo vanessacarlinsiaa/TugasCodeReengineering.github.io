@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="Dispensable.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -26,7 +25,7 @@
         <nav class="navbar">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a>Bad Code Smell</a>
+                <li><a>Bad Code Smell <i class="fa fa-angle-down"></i></a>
                     <ul>
                         <li><a href="Change_Preventer.html">Change Preventer</a>
                             <ul>
@@ -34,7 +33,7 @@
                                 <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchies</a>
                                 <li><a href="Shotgun_Surgery.html">Shotgun Surgery</a>
                             </ul>
-                        <li><a href="Dispensable.html">Dispensable</a>
+                        <li><a href="Dispensable.html">Dispensable </a>
                             <ul>
                                 <li><a href="Comments.html">Comments</a>
                                 <li><a href="Data_Class.html">Data Class</a>
@@ -52,9 +51,102 @@
     </header>
     
     <div class="layer1">
-        <h2>Code Reengineering</h2>
-        <p>Bad Code Smell</p>
-        <p style="border-bottom: 2px dashed gray; font-weight: 300;">Dispensable & Change Preventer</p>
+        <div class="container1">
+            <img src="img/dispensables.png" alt="">
+        </div>
+        <div class="container2">
+            <h1>Dispensable</h1>
+            <p>Dispensable adalah sesuatu yang tidak berguna dan tidak diperlukan didalam sebuah code. Keberadaannya tidak akan
+                membuat code menjadi lebih bersih, lebih efisien, dan lebih mudah dipahami. Sehingga, jika dihapus tidak akan 
+                mempengaruhi fungsionalitas dari program.</p>
+        </div>
+    </div>
+
+    <div class="layer2">        
+        <div class="container1"> 
+            <div class="left">
+                <!-- <a href="Divergent_Change.html"></a> -->
+                <img src="img/comments.png" alt="">
+                <h2>Comments</h2>
+            </div>
+            <div class="right">
+                <p>Comments adalah kondisi di mana code memiliki banyak comment yang seharusnya tidak perlu. Ini mungkin 
+                    terjadi karena code yang kompleks atau sulit dipahami, sehingga pengembang merasa perlu untuk 
+                    menambahkan banyak comment untuk menjelaskan apa yang dilakukan oleh code tersebut.</p>
+                <br><a href="Comments.html">Read more ></a></p>
+            </div>
+        </div>
+        
+        <div class="container2">
+            <div class="left">
+                <!-- <a href="Divergent_Change.html"></a> -->
+                <img src="img/data class.png" alt="">
+            <h2>Data Class</h2>
+        </div>
+        <div class="right">
+            <p>Data class adalah class yang hanya berfungsi sebagai wadah untuk menyimpan data tanpa memiliki logika 
+                bisnis yang signifikan. Dispensable bad code smell terjadi ketika ada data class yang sebenarnya tidak 
+                diperlukan dan hanya menambah kompleksitas code tanpa memberikan nilai tambah yang nyata.</p>
+                <br><a href="Data_Class.html">Read more ></a></p>
+            </div>
+        </div>
+
+        <div class="container3">
+            <div class="left">
+                <img src="img/dead code.png" alt="">
+                <h2>Dead Code</h2>
+            </div>
+            <div class="right">
+                <p>Dead code merujuk pada potongan code yang tidak pernah dieksekusi dalam aplikasi. Ini bisa berupa 
+                    function, variabel, atau bahkan blok code yang tidak lagi digunakan atau diakses dalam aplikasi.</p>
+                <br><a href="Dead_Code.html">Read more ></a></p>
+            </div>
+        </div>
+        
+        <div class="container4"> 
+            <div class="left">
+                <!-- <a href="Divergent_Change.html"></a> -->
+                <img src="img/duplicate code.png" alt="">
+            <h2>Duplicate Code</h2>
+        </div>
+        <div class="right">
+            <p>Duplicate Code adalah situasi di mana potongan code yang sama atau serupa muncul di beberapa bagian 
+                dari program. Hal ini memperumit pemeliharaan dan pengembangan code, karena perubahan yang dibutuhkan 
+                harus dilakukan di beberapa tempat, meningkatkan risiko kesalahan dan menyulitkan pemahaman code.</p>
+                <br><a href="Duplicate_Code.html">Read more ></a></p>
+            </div>
+    </div>
+    
+    <div class="container5">
+        <div class="left">
+            <img src="img/lazy class.png" alt="">
+            <h2>Lazy Class</h2>
+        </div>
+        <div class="right">
+            <p>Lazy class adalah sebuah class yang tidak memberikan banyak nilai tambah atau fungsionalitas yang 
+                cukup signifikan dalam program. class semacam itu sering kali hanya memiliki beberapa metode atau 
+                properti, dan tidak memiliki alasan yang kuat untuk keberadaannya.</p>
+            <br><a href="Lazy_Class.html">Read more ></a></p>
+        </div>
+    </div>
+    
+    <div class="container6">
+        <div class="left">
+            <img src="img/speculative generality.png" alt="">
+            <h2>Speculative Generality</h2>
+        </div>
+        <div class="right">
+            <p>Speculative Generality terjadi ketika sebuah code memiliki fitur atau function yang tidak digunakan 
+                saat ini, tetapi disertakan karena diperkirakan mungkin akan berguna di masa depan. Hal ini dapat 
+                menciptakan kompleksitas yang tidak perlu dan mempersulit pemahaman terhadap code.</p>
+                <br><a href="Speculative_Generality.html">Read more ></a></p>
+            </div>
+        </div>
+    </div>
+    
+    <hr class="hr4">
+    <div class="footer">
+        Copyright &copy; 2024 by Feren Lisady and Vanessa Carlinsia
     </div>
 </body>
 

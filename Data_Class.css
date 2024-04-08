@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     /* box-sizing: border-box; */
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     /* text-transform: capitalize; */
     text-decoration: none;
 }
@@ -10,16 +10,17 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: #F8F7F4;
 }
 
 header{
     top: 0;
     left: 0;
     right: 0;
-    background: white;
-    box-shadow: 0 5px 10px rgba(0,0,0,.1);
-    padding: 15px 20px;
+    margin-top: 20px;
+    background: #F8F7F4;
+    /* box-shadow: 0 5px 10px rgba(0,0,0,.1); */
+    padding: 0px 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -28,14 +29,9 @@ header{
 
 header .logo{
     font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
+    font-size: 28px;
     letter-spacing: 3px;
     color: black;
-    margin-left: 60px;
-}
-
-header .navbar{
-    margin-right: 60px;
 }
 
 header .navbar ul{
@@ -53,11 +49,11 @@ header .navbar ul li a{
     padding: 15px;
     color: #333;
     display: block;
+    border-bottom: 3px solid transparent;
 }
 
 header .navbar ul li a:hover{
-    background: #333;
-    color: white;
+    border-bottom: solid #333;
 }
 
 header .navbar ul li ul{
@@ -93,70 +89,242 @@ header label{
     display: none;
 }
 
-/* Layer 1 */
-.layer1{
-    margin-top: 25px;
-    padding: 0;
-    width: 100vw;
-    height: 10vh;
-    border-color: #333;
-    /* line-height: 20px; */
+.content1{
+    padding-top: 60px;
+}
+.content1 h1{
+    padding-left: 700px;
+    font-size: 50px;
+    padding-bottom: 50px;
+}
+.content1 img{
+    padding-top: 10px;
+    padding-left: 650px;
+    width: 400px;
+    padding-bottom: 55px;
 }
 
-.layer1 h2{
+.content1 p{
+    padding-left: 350px;
+    padding-right: 350px;
+    padding-bottom: 20px;
+    justify-content: left;
+    text-align: justify;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px; 
+}
+
+.hr1{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 20.5vw;
+    color: #333 1px;
+    width: 1000px;
+}
+
+/* layer 2 */
+.layer2{
+    display: flex;
+    justify-content: left;
+    padding-bottom: 10px;
+    line-height: 30px;
+}
+
+.layer2 .container1 img{
+    padding-left: 330px;
+    width: 300px;
+}
+
+.layer2 .container2 h4{
+    padding-top: 70px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    font-size: 20px;
+}
+
+.layer2 .container2 p{
+    font-weight: 400;
+    line-height: 40px;
+    padding-left: 30px;
+    padding-right: 400px;
+}
+
+/* layer 3 */
+.layer3{
+    display: flex;
+}
+
+.layer3 .container1 h4{
+    margin-top: 30px;
+    padding-left: 400px;
+    padding-bottom: 30px;
+    font-size: 20px;
+}
+
+.layer3 .container1 ul {
+    font-weight: 400;
+    padding-left: 460px;
+    margin-right: 70px;
+    line-height: 30px; 
+}
+
+.layer3 .container2 img{
+    padding-right: 370px;
+    width: 300px;
+}
+
+
+.hr2{
+    margin-bottom: 30px;
+    margin-left: 20.5vw;
+    color: #333 1px;
+    width: 1000px;
+}
+.hr3{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 20.5vw;
+    color: #333 1px;
+    width: 1000px;
+}
+
+/* layer 4 */
+
+/* wrapper */
+
+.layer4 .wrapper{
+    padding-left: 390px;
+    padding-bottom: 50px;
+    justify-content: center;
+}
+
+.layer4 .collapsible{
+    width: 800px;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.layer4 .collapsible input{
+    display: none;
+}
+
+.layer4 .collapsible label{
+    position: relative;
+    font-weight: bold;
+    font-size: 20px;
+    background: #F8F7F4;
+    color: black;
+    display: block;
+    cursor: pointer;
+    padding: 15px;
+    z-index: 1;
+}
+
+.layer4 .collapsible label i{
+    padding-left: 600px;
+}
+
+.layer4 .collapsible label i:after {
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 18px;
+    height: fit-content;
+    transform: rotate(180deg);
+    transition: all 0.1s ease;
+}
+
+.layer4 .collapsible input:checked + label:after{
+    transform: rotate(180%);
+}
+
+.layer4 .collapsible-text{
+    max-height: 1px;
+    overflow: hidden;
+    line-height: 1.4;
+    position: relative;
+    top: -100%;
+    opacity: 0.5;
+    transition: all 0.1s ease;
+}
+
+.layer4 .collapsible input:checked ~ .collapsible-text{
+    max-height: 5000px;
+    padding-bottom: 25px;
+    background:#F8F7F4;
+    opacity: 1;
+    top: 0;
+}
+
+.layer4 .container1{
+    display:block;
+}
+
+.layer4 .container1 h5{
+    text-align: left;
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+.layer4 .container1 pre{
+    padding-left: 20px;
+    margin-right: 80px;
+    padding-bottom: 10px;
+    font-size: 13px;
+}
+
+.layer4 .container1 .penjelasan2 p{
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 80px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.layer4 .container2{
+    display: block;
+}
+
+.layer4 .container2 h5{
+    text-align: left;
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+.layer4 .container2 pre{
+    padding-left: 20px;
+    margin-right: 80px;
+    padding-bottom: 10px;
+    font-size: 13px;
+}
+
+.layer4 .container2 .penjelasan2 p{
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 80px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+/* footer */
+.hr4{
+    size: 1%;
+    color: #ababab;
+}
+
+.footer{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
     text-align: center;
-    font-size: 60px;
-    letter-spacing: 3px;
-}
-
-
-.layer1 p{
-    text-align: center;
-    font-weight: 600;
-}
-
-
-
-
-
-
-
-
-
-
-@media(max-width:991px){
-    header{
-        padding: 20px;
-    }
-
-    header label{
-        display: initial;
-    }
-
-    header .navbar{
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        border: 1px solid rgba(0,0,0,.1);
-        display: none;
-    }
-
-    header .navbar ul li{
-        width: 100%;
-    }
-
-    header .navbar ul li ul{
-        position: relative;
-        width: 100%;
-    }
-
-    header .navbar ul li ul li{
-        background: white;
-    }
-
-    #menu-bar:checked ~ .navbar{
-        display: initial;
-    }
 }

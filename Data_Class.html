@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="Data_Class.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
         <nav class="navbar">
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a>Bad Code Smell</a>
+                <li><a>Bad Code Smell <i class="fa fa-angle-down"></i></a>
                     <ul>
                         <li><a href="Change_Preventer.html">Change Preventer</a>
                             <ul>
@@ -34,7 +34,7 @@
                                 <li><a href="Parallel_Inheritance_Hierarchies.html">Parallel Inheritance Hierarchies</a>
                                 <li><a href="Shotgun_Surgery.html">Shotgun Surgery</a>
                             </ul>
-                        <li><a href="Dispensable.html">Dispensable</a>
+                        <li><a href="Dispensable.html">Dispensable </a>
                             <ul>
                                 <li><a href="Comments.html">Comments</a>
                                 <li><a href="Data_Class.html">Data Class</a>
@@ -51,11 +51,111 @@
         </nav>
     </header>
     
-    <div class="layer1">
-        <h2>Code Reengineering</h2>
-        <p>Bad Code Smell</p>
-        <p style="border-bottom: 2px dashed gray; font-weight: 300;">Dispensable & Change Preventer</p>
+    <div class="content1">
+        <h1>Data Class</h1>
+        <img src="img/data class.png" alt="DC">
+        <p>Data class adalah class yang hanya berfungsi sebagai wadah untuk menyimpan data tanpa memiliki logika 
+            bisnis yang signifikan. Dispensable bad code smell terjadi ketika ada data class yang sebenarnya tidak 
+            diperlukan dan hanya menambah kompleksitas code tanpa memberikan nilai tambah yang nyata.</p>
     </div>
+
+    <hr class="hr1">
+    
+    <div class="layer2">
+        <div class="container1">
+            <img src="img/reason.png" alt="">
+        </div>
+        <div class="container2">
+            <h4>Alasan utama terjadinya "Data Class":</h4>
+            <p>Data class yang tidak diperlukan dapat memperumit struktur code 
+                dan membuatnya sulit dipahami. Hal ini dapat menyebabkan overhead 
+                dalam pengembangan, pemeliharaan, dan debugging code.</p>
+        </div>
+    </div>
+    </div>
+    <hr class="hr2">
+
+
+    <div class="layer3">
+        <div class="container1">
+            <h4>Cara Mengatasi</h4>
+            <ul>
+                <li>Evaluasi apakah data class tersebut benar-benar diperlukan. Jika tidak, pertimbangkan untuk menghapusnya.</li>
+                    <br>
+                <li>Jika data class memang diperlukan, pastikan bahwa ia memiliki tanggung jawab yang jelas dan memanggil hanya pada kasus penggunaan yang relevan.</li>
+            </ul>
+        </div>
+        <div class="container2">
+            <img src="img/solve.png" alt="">
+        </div>
+    </div>
+    <hr class="hr3">
+
+    <div class="layer4">
+        <div class="wrapper">
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head">
+                <label for="collapsible-head">Contoh Code <i class="fa fa-angle-down"></i></label>
+                <div class="collapsible-text">
+                    <div class="container1">
+                        <h5>Sebelum Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+public class Person {
+    private String name;
+    private int age;
+    private String address;
+
+    public Person(String name, int age, String address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
+
+    // getters and setters
+}                               
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Sebelum perubahan, kita memiliki class Java bernama Person yang memiliki tiga properti: 
+                                name, age, dan address. Class ini memiliki konstruktor untuk menginisialisasi nilai 
+                                properti tersebut, serta getter dan setter untuk akses ke properti-properti tersebut. 
+                                Namun, tidak ada logika tambahan di dalam class tersebut selain pengaturan dan 
+                                pengambilan nilai properti.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="container2">
+                        <h5>Setelah Refactor</h5>
+                        <pre style="tab-size: 4;">
+                            <code class="language-java">
+// code ini hanya menggunakan field-field dari Person, tanpa logika tambahan.
+// Jadi, mengubah Person menjadi data class lebih baik.
+public record Person(String name, int age, String address) {}
+                            </code>
+                        </pre>
+                        <div class="penjelasan2">
+                            <p>Setelah melakukan perubahan, kita mengubah class Person menjadi sebuah data class menggunakan 
+                                fitur baru dari Java 16 yaitu record. Sekarang, Person direpresentasikan oleh satu baris code 
+                                dengan menggunakan record. Record secara otomatis menyediakan konstruktor, getter, dan method 
+                                lainnya untuk properti-properti yang diberikan pada konstruktor. Ini mengurangi boilerplate code 
+                                dan membuat code lebih ringkas dan mudah dibaca. Dengan perubahan ini, code menjadi lebih sederhana 
+                                dan mudah dipahami. Kita masih bisa mengakses properti name, age, dan address dengan cara yang sama 
+                                seperti sebelumnya, namun dengan code yang lebih efisien.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr class="hr4">
+    <div class="footer">
+        Copyright &copy; 2024 by Feren Lisady and Vanessa Carlinsia
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>
